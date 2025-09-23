@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>C:\Users\tay\moduleProduction\GateDr\hardware\gateDr_displayboard\gateDr_displayboard.kicad_sch</source>
+    <date>3/19/2024 4:59:32 PM</date>
+    <tool>Eeschema 7.0.2</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title/>
+        <company/>
+        <rev/>
+        <date/>
+        <source>gateDr_displayboard.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C1">
+      <value>1u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">GCM188R71E105KA64D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part No." value="GCM188R71E105KA64D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d35e3c38-7122-4847-ba58-8db0991f4b02</tstamps>
+    </comp>
+    <comp ref="C2">
+      <value>1u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">GCM188R71E105KA64D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part No." value="GCM188R71E105KA64D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>90e980bf-6260-4ab5-9411-7bf539c27949</tstamps>
+    </comp>
+    <comp ref="C3">
+      <value>1u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">GCM188R71E105KA64D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part No." value="GCM188R71E105KA64D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>4508c108-f8b1-4f50-af89-bb7685410840</tstamps>
+    </comp>
+    <comp ref="C4">
+      <value>1u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">GCM188R71E105KA64D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part No." value="GCM188R71E105KA64D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7f6e3a77-f01b-45e7-a020-d2226a483fcf</tstamps>
+    </comp>
+    <comp ref="C5">
+      <value>4.7u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">GRM188Z71C475KE21D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part No." value="GRM188Z71C475KE21D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>ea64b3a4-d751-41d5-80f2-e0851e5db88f</tstamps>
+    </comp>
+    <comp ref="C6">
+      <value>4.7u</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">GRM188Z71C475KE21D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part No." value="GRM188Z71C475KE21D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Unpolarized capacitor"/>
+      <property name="ki_keywords" value="cap capacitor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>b13fa52b-19fa-4122-b4f7-e2f44d917c58</tstamps>
+    </comp>
+    <comp ref="J1">
+      <value>1x7 100mil Male Socket</value>
+      <footprint>Connector_PinHeader_2.54mm:PinHeader_1x07_P2.54mm_Vertical</footprint>
+      <libsource lib="Connector_Generic" part="Conn_01x07" description="Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)"/>
+      <property name="ki_keywords" value="connector"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>10d1b77c-5259-4e1d-8d67-3065a82d9ce1</tstamps>
+    </comp>
+    <comp ref="J2">
+      <value>FH52-30S-0.5SH</value>
+      <footprint>GateDrFootprintLibrary:FH52-30S</footprint>
+      <libsource lib="ER-OLED13A1" part="ER-OLED13A1-1W" description=""/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>70bbb7c9-09ff-4b33-b696-bafa9b51adb7</tstamps>
+    </comp>
+    <comp ref="R1">
+      <value>910k</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Mouser Part No.">CRCW0402910KFKED</field>
+      </fields>
+      <libsource lib="Device" part="R_US" description="Resistor, US symbol"/>
+      <property name="Mouser Part No." value="CRCW0402910KFKED"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="gateDr_displayboard.kicad_sch"/>
+      <property name="ki_description" value="Resistor, US symbol"/>
+      <property name="ki_keywords" value="R res resistor"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2ae8691a-b67e-4220-96ed-c3618990f103</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector_Generic" part="Conn_01x07">
+      <description>Generic connector, single row, 01x07, script generated (kicad-library-utils/schlib/autogen/connector/)</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Connector*:*_1x??_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">Conn_01x07</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="Pin_1" type="passive"/>
+        <pin num="2" name="Pin_2" type="passive"/>
+        <pin num="3" name="Pin_3" type="passive"/>
+        <pin num="4" name="Pin_4" type="passive"/>
+        <pin num="5" name="Pin_5" type="passive"/>
+        <pin num="6" name="Pin_6" type="passive"/>
+        <pin num="7" name="Pin_7" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R_US">
+      <description>Resistor, US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ER-OLED13A1" part="ER-OLED13A1-1W">
+      <fields>
+        <field name="Reference">J</field>
+      </fields>
+      <pins>
+        <pin num="1" name="VSS" type="power_in"/>
+        <pin num="2" name="C2P" type="input"/>
+        <pin num="3" name="C2N" type="input"/>
+        <pin num="4" name="C1P" type="input"/>
+        <pin num="5" name="C1N" type="input"/>
+        <pin num="6" name="VDDP" type="power_in"/>
+        <pin num="7" name="NC" type="no_connect"/>
+        <pin num="8" name="VSS" type="power_in"/>
+        <pin num="9" name="VDD" type="power_in"/>
+        <pin num="10" name="BS0" type="input"/>
+        <pin num="11" name="BS1" type="input"/>
+        <pin num="12" name="BS2" type="input"/>
+        <pin num="13" name="CS" type="input"/>
+        <pin num="14" name="RST" type="input"/>
+        <pin num="15" name="DC" type="input"/>
+        <pin num="16" name="RW" type="input"/>
+        <pin num="17" name="ERD" type="input"/>
+        <pin num="18" name="D0" type="input"/>
+        <pin num="19" name="D1" type="input"/>
+        <pin num="20" name="D2" type="input"/>
+        <pin num="21" name="D3" type="input"/>
+        <pin num="22" name="D4" type="input"/>
+        <pin num="23" name="D5" type="input"/>
+        <pin num="24" name="D6" type="input"/>
+        <pin num="25" name="D7" type="input"/>
+        <pin num="26" name="IREF" type="input"/>
+        <pin num="27" name="VCOMH" type="input"/>
+        <pin num="28" name="VCC" type="input"/>
+        <pin num="29" name="VLSS" type="power_in"/>
+        <pin num="30" name="VSS" type="power_in"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector_Generic">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Connector_Generic.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>C:\Program Files\KiCad\7.0\share\kicad\symbols\/Device.kicad_sym</uri>
+    </library>
+    <library logical="ER-OLED13A1">
+      <uri>C:/Users/tay/moduleProduction/GateDr/GateDrSymbolLibrary/ER-OLED13A1.kicad_sym</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3.3V">
+      <node ref="C3" pin="1" pintype="passive"/>
+      <node ref="C4" pin="1" pintype="passive"/>
+      <node ref="J1" pin="6" pinfunction="Pin_6" pintype="passive"/>
+      <node ref="J2" pin="6" pinfunction="VDDP" pintype="power_in"/>
+      <node ref="J2" pin="9" pinfunction="VDD" pintype="power_in"/>
+    </net>
+    <net code="2" name="/display_CS">
+      <node ref="J1" pin="4" pinfunction="Pin_4" pintype="passive"/>
+      <node ref="J2" pin="13" pinfunction="CS" pintype="input"/>
+    </net>
+    <net code="3" name="/display_DC">
+      <node ref="J1" pin="5" pinfunction="Pin_5" pintype="passive"/>
+      <node ref="J2" pin="15" pinfunction="DC" pintype="input"/>
+    </net>
+    <net code="4" name="/display_DO">
+      <node ref="J1" pin="2" pinfunction="Pin_2" pintype="passive"/>
+      <node ref="J2" pin="19" pinfunction="D1" pintype="input"/>
+    </net>
+    <net code="5" name="/display_RST">
+      <node ref="J1" pin="3" pinfunction="Pin_3" pintype="passive"/>
+      <node ref="J2" pin="14" pinfunction="RST" pintype="input"/>
+    </net>
+    <net code="6" name="/display_SCK">
+      <node ref="J1" pin="1" pinfunction="Pin_1" pintype="passive"/>
+      <node ref="J2" pin="18" pinfunction="D0" pintype="input"/>
+    </net>
+    <net code="7" name="GND">
+      <node ref="C3" pin="2" pintype="passive"/>
+      <node ref="C4" pin="2" pintype="passive"/>
+      <node ref="C5" pin="1" pintype="passive"/>
+      <node ref="C6" pin="1" pintype="passive"/>
+      <node ref="J1" pin="7" pinfunction="Pin_7" pintype="passive"/>
+      <node ref="J2" pin="1" pinfunction="VSS" pintype="power_in"/>
+      <node ref="J2" pin="10" pinfunction="BS0" pintype="input"/>
+      <node ref="J2" pin="11" pinfunction="BS1" pintype="input"/>
+      <node ref="J2" pin="12" pinfunction="BS2" pintype="input"/>
+      <node ref="J2" pin="16" pinfunction="RW" pintype="input"/>
+      <node ref="J2" pin="17" pinfunction="ERD" pintype="input"/>
+      <node ref="J2" pin="21" pinfunction="D3" pintype="input"/>
+      <node ref="J2" pin="22" pinfunction="D4" pintype="input"/>
+      <node ref="J2" pin="23" pinfunction="D5" pintype="input"/>
+      <node ref="J2" pin="24" pinfunction="D6" pintype="input"/>
+      <node ref="J2" pin="25" pinfunction="D7" pintype="input"/>
+      <node ref="J2" pin="29" pinfunction="VLSS" pintype="power_in"/>
+      <node ref="J2" pin="30" pinfunction="VSS" pintype="power_in"/>
+      <node ref="J2" pin="8" pinfunction="VSS" pintype="power_in"/>
+      <node ref="R1" pin="1" pintype="passive"/>
+    </net>
+    <net code="8" name="Net-(J2-C1N)">
+      <node ref="C2" pin="1" pintype="passive"/>
+      <node ref="J2" pin="5" pinfunction="C1N" pintype="input"/>
+    </net>
+    <net code="9" name="Net-(J2-C1P)">
+      <node ref="C2" pin="2" pintype="passive"/>
+      <node ref="J2" pin="4" pinfunction="C1P" pintype="input"/>
+    </net>
+    <net code="10" name="Net-(J2-C2N)">
+      <node ref="C1" pin="1" pintype="passive"/>
+      <node ref="J2" pin="3" pinfunction="C2N" pintype="input"/>
+    </net>
+    <net code="11" name="Net-(J2-C2P)">
+      <node ref="C1" pin="2" pintype="passive"/>
+      <node ref="J2" pin="2" pinfunction="C2P" pintype="input"/>
+    </net>
+    <net code="12" name="Net-(J2-IREF)">
+      <node ref="J2" pin="26" pinfunction="IREF" pintype="input"/>
+      <node ref="R1" pin="2" pintype="passive"/>
+    </net>
+    <net code="13" name="Net-(J2-VCC)">
+      <node ref="C6" pin="2" pintype="passive"/>
+      <node ref="J2" pin="28" pinfunction="VCC" pintype="input"/>
+    </net>
+    <net code="14" name="Net-(J2-VCOMH)">
+      <node ref="C5" pin="2" pintype="passive"/>
+      <node ref="J2" pin="27" pinfunction="VCOMH" pintype="input"/>
+    </net>
+    <net code="15" name="unconnected-(J2-D2-Pad20)">
+      <node ref="J2" pin="20" pinfunction="D2" pintype="input+no_connect"/>
+    </net>
+    <net code="16" name="unconnected-(J2-NC-Pad7)">
+      <node ref="J2" pin="7" pinfunction="NC" pintype="no_connect"/>
+    </net>
+  </nets>
+</export>

@@ -1,0 +1,36 @@
+Component Count:,111,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+Item,Qty,Reference(s),Description,Value,Part No.,Mounting Type,DNP
+1,7,"C1, C21, C27, C29, C31, C34, C35",capacitor,1u,GCM188R71E105KA64D,Surface mount,
+2,11,"C2, C3, C10, C11, C20, C26, C28, C30, C32, C33, C36",capacitor,100n,GRM155R71H104KE14J ,Surface mount,
+3,6,"C4, C5, C6, C7, C8, C9",capacitor,22u,CL21A226MAYNNNE ,Surface mount,
+4,12,"C12, C13, C14, C15, C16, C17, C18, C19, C22, C23, C24, C25",capacitor,1.0n,GRM155R71H102KA01J ,Surface mount,
+5,3,"D1, D2, D8",diode,1n5819HW-7-F,1n5819HW-7-F,Surface mount,
+6,4,"D3, D4, D5, D6",LED,WP483GDT Green,WP483GDT Green,Thru-hole,DNP
+7,1,D7,TVS/ESD diode,PRTR5V0U2X, 771-PRTR5V0U2X-T/R ,Surface mount,
+8,3,"FB1, FB2, FB3",ferrite bead,WE742792651,WE742792651,Surface mount,
+9,1,J1,pin strip header,2x5 100mil Shrouded Header,,Thru-hole,DNP
+10,10,"J2, J3, J4, J5, J6, J7, J8, J9, J10, J11",input/output jack,WQP-WQP518MA,WQP-WQP518MA,Thru-hole,DNP
+11,1,J12,pin strip socket,1x7 100mil Female Socket,,Thru-hole,DNP
+12,1,J13,pin strip header,2x5 50mil Header,,Thru-hole,DNP
+13,1,J14,micro-USB connector,10118194-0011LF, 649-10118194-0011LF ,Surface mount,
+14,1,R1,resistor,2k2,CRCW04022K20FKED,Surface mount,
+15,6,"R2, R7, R10, R13, R16, R19",resistor,20k,CRCW040220K0FKED,Surface mount,
+16,9,"R3, R6, R9, R12, R15, R18, R37, R38, R39",resistor,100k,CRCW0402100KFKED,Surface mount,
+17,6,"R4, R5, R8, R11, R14, R17",resistor,120k,CRCW0402120KFKED,Surface mount,
+18,4,"R20, R25, R29, R33",resistor,56k,CRCW040256K0FKED,Surface mount,
+19,4,"R21, R24, R28, R32",resistor,39k,CRCW040239K0FKED,Surface mount,
+20,5,"R22, R26, R30, R34, R36",resistor,1k,CRCW04021K00FKED,Surface mount,
+21,4,"R23, R27, R31, R35",resistor,1k 1/4W,RCC08051K00FKEA,Surface mount,
+22,2,"SW1, SW2",pushbutton switch,5GTH935,5GTH935,Thru-hole,DNP
+23,1,SW3,rotary encoder,PEC11R-4220F-S0024,PEC11R-4220F-S0024,Thru-hole,DNP
+24,1,SW4,pushbutton switch,B3F-1000,B3F-1000,Thru-hole,DNP
+25,1,U2,voltage regulator,LM1117MP-3.3,LM1117MP-3.3,Surface mount,
+26,1,U3,voltage reference,LM4040BIM3X-10,LM4040BIM3X-10,Surface mount,
+27,1,U4,rail-to-rail op amp,MCP6004-I/SL,MCP6004-I/SL,Surface mount,
+28,1,U5,rail-to-rail op amp,MCP6002-I/SN,MCP6002-I/SN,Surface mount,
+29,2,"U6, U7",op amp,TL074HIDR,TL074HIDR,Surface mount,
+30,1,U8,microcontroller,ATSAMD21E17A-AU,ATSAMD21E17A-AU,Surface mount,

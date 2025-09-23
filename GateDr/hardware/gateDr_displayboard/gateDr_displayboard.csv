@@ -1,0 +1,13 @@
+,,,,,,,,
+,,,,,,,,
+,,,,,,,,
+Component Count:,9,,,,,,,
+,,,,,,,,
+Collated Components:,,,,,,,,
+,,,,,,,,
+Item,Qty,Reference(s),Description,Value,Manufacturer,Part No.,Mounting Type,DNP
+1,4,"C1, C2, C3, C4",capacitor,1u,Murata,GCM188R71E105KA64D,Surface mount,
+2,2,"C5, C6",capacitor,4.7u,Murata,GRM188Z71C475KE21D,Surface mount,
+3,1,J1,pin strip header,1x7 100mil Male Socket,Samtec,TSW-107-06-T-S,Thru-hole,DNP
+4,1,J2,FPC connector socket,FH12A-30S-0.5SH(55),Hirose Connector,FH12A-30S-0.5SH(55),Surface mount,
+5,1,R1,resistor,910k,Vishay,CRCW0402910KFKED,Surface mount,

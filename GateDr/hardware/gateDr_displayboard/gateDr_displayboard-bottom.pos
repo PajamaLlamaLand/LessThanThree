@@ -1,0 +1,15 @@
+### Footprint positions - created on Fri Jan 10 16:24:17 2025 ###
+### Printed by KiCad version 7.0.2
+## Unit = mm, Angle = deg.
+## Side : bottom
+# Ref     Val                     Package                               PosX       PosY       Rot  Side
+C1        1u                      C_0603_1608Metric                  16.2500    15.7500   90.0000  bottom
+C2        1u                      C_0603_1608Metric                  17.2500    12.5000   90.0000  bottom
+C3        1u                      C_0603_1608Metric                  17.7500     8.9750   90.0000  bottom
+C4        1u                      C_0603_1608Metric                  19.5000     8.9750   90.0000  bottom
+C5        4.7u                    C_0603_1608Metric                  27.7500    10.9750  -90.0000  bottom
+C6        4.7u                    C_0603_1608Metric                  29.7500     9.5000  -90.0000  bottom
+J1        1x7_100mil_Male_Socket  PinHeader_1x07_P2.54mm_Vertical    29.7900    30.7800   90.0000  bottom
+J2        FH12A-30S-0.5SH(55)     FH12A-30S-0.5SH                    22.0000     4.0000  180.0000  bottom
+R1        910k                    R_0402_1005Metric                  26.4900     8.0000    0.0000  bottom
+## End

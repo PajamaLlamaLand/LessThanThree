@@ -1,0 +1,40 @@
+### Footprint positions - created on Fri Jan 10 16:26:00 2025 ###
+### Printed by KiCad version 7.0.2
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                       Package                               PosX       PosY       Rot  Side
+C4        22u                       C_0805_2012Metric                   3.2400    92.4300  -90.0000  top
+C5        22u                       C_0805_2012Metric                   5.2400    92.4300  -90.0000  top
+C6        22u                       C_0805_2012Metric                   5.2400    76.3800  -90.0000  top
+C7        22u                       C_0805_2012Metric                   3.2400    76.3800  -90.0000  top
+C8        22u                       C_0805_2012Metric                   2.2400    99.6200   90.0000  top
+C9        22u                       C_0805_2012Metric                  14.6900   100.0300    0.0000  top
+C10       100n                      C_0402_1005Metric                  14.2100    98.0300    0.0000  top
+C11       100n                      C_0402_1005Metric                   5.9500    70.1500   90.0000  top
+D1        1n5819HW-7-F              D_SOD-123                           9.2400    75.3800  -90.0000  top
+D2        1n5819HW-7-F              D_SOD-123                           9.2400    94.3800  -90.0000  top
+D3        WP483GDT_Green            LED_D5.0mm_FlatTop                  5.7000    18.0300    0.0000  top
+D4        WP483GDT_Green            LED_D5.0mm_FlatTop                 19.2400    18.0300  180.0000  top
+D5        WP483GDT_Green            LED_D5.0mm_FlatTop                 27.9650    18.0300    0.0000  top
+D6        WP483GDT_Green            LED_D5.0mm_FlatTop                 41.7400    18.0300  180.0000  top
+FB1       WE742792651               BEADC1608X100N                      6.0400    96.0300  180.0000  top
+FB2       WE742792651               BEADC1608X100N                      5.7400    73.3800  180.0000  top
+FB3       WE742792651               BEADC1608X100N                     13.7400    82.5300  -90.0000  top
+J2        WQP-WQP518MA              AudioJack_WQP518MA                  6.7400    28.0300  180.0000  top
+J3        WQP-WQP518MA              AudioJack_WQP518MA                 17.7400    28.0300  180.0000  top
+J4        WQP-WQP518MA              AudioJack_WQP518MA                 29.2400    28.0300  180.0000  top
+J5        WQP-WQP518MA              AudioJack_WQP518MA                 40.2400    28.0300  180.0000  top
+J6        WQP-WQP518MA              AudioJack_WQP518MA                  6.7400    42.0300  180.0000  top
+J7        WQP-WQP518MA              AudioJack_WQP518MA                 17.7400    42.0300  180.0000  top
+J8        WQP-WQP518MA              AudioJack_WQP518MA                  6.7400     7.0300  180.0000  top
+J9        WQP-WQP518MA              AudioJack_WQP518MA                 18.0900     7.0300  180.0000  top
+J10       WQP-WQP518MA              AudioJack_WQP518MA                 29.2400     7.0300  180.0000  top
+J11       WQP-WQP518MA              AudioJack_WQP518MA                 40.2400     7.0300  180.0000  top
+J12       1x7_100mil_Female_Socket  PinSocket_1x07_P2.54mm_Vertical    31.2400   103.0300  -90.0000  top
+R1        2k2                       R_0402_1005Metric                   4.9500    70.1600  -90.0000  top
+SW1       5GTH935                   5GTH935                            29.6200    54.8400  180.0000  top
+SW2       5GTH935                   5GTH935                            29.6600    41.2200  180.0000  top
+SW3       PEC11R-4220F-S0024        PEC11R4220FS0024                    9.7400    66.2800    0.0000  top
+U2        LM1117MP-3.3              SOT-223-3_TabPin2                   8.2400   100.8800    0.0000  top
+U3        LM4040BIM3X-10            SOT-23                             10.2400    70.6200    0.0000  top
+## End
