@@ -1,5 +1,7 @@
 # Gate Dr. 
 
+![Gate Dr. front panel](/documentation/GateDr_fullModule_v1_0.JPG)
+
 The Gate Doctor is a multi-functional logic, comparator, and gate manipulation module in the Eurorack synth format.
 
 The module is based around extracting, combining, and further modulating gate signals from your Eurorack system. It can be a simple comparator, logic module, clock divider, probability generator, gate delay (plus plenty of other features/modulation options), or many combinations of those at once!
