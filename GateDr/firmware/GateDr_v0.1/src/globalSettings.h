@@ -40,7 +40,10 @@ struct GlobalSettings {
 	char chResetStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char longPressTimeStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char screenSaverTimeStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
+	bool globalDef;
+	
 	char *globalSettingsParams[6];	// stores pointers to param strings used by UI
+	bool *globalSettingsDefaults[6]; // stores 'default' states for params, used by menu.c
 	};
 
 struct GlobalSettings globalSettings;

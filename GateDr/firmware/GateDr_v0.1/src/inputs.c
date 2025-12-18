@@ -18,15 +18,18 @@
  *	sets all input settings to their defaults
 */
 void setInputDefaults(struct InputSettings *settings) {
-	settings->threshold = THRESH_DEFAULT;
-	settings->invert = DEFAULT_INVERT;
-	settings->hysteresis = HYS_DEFAULT;
-	settings->thresholdCv = CV_NONE;
-	settings->invertCv = CV_NONE;
-	settings->hysCv = CV_NONE;
+	settings->threshold =		THRESH_DEFAULT;
+	settings->invert =			DEFAULT_INVERT;
+	settings->hysteresis =		HYS_DEFAULT;
+	settings->thresholdCv =		CV_NONE;
+	settings->invertCv =		CV_NONE;
+	settings->hysCv =			CV_NONE;
 	sprintf(settings->thresholdStr, "%dmV", THRESH_DEFAULT);
 	sprintf(settings->invertStr, "false");
 	sprintf(settings->hysStr, "%d0mV", HYS_DEFAULT);
+	settings->thresholdDef =	true;
+	settings->invertDef =		true;
+	settings->hysDef =			true;
 }
 
 /*
@@ -82,6 +85,7 @@ void processInput(struct InputSettings *settings, struct InputState *state, int1
  *	inputs according to the given settings
 */
 void processChannelInput(struct Input *input, int16_t in1_mV, int16_t in2_mV, struct Cv *cv) {
+	
 	processInput(&input->input_settings[0], &input->input_state[0], in1_mV, cv);
 	
 	if (input->copyIn1) {
@@ -96,6 +100,7 @@ void processChannelInput(struct Input *input, int16_t in1_mV, int16_t in2_mV, st
  *	update CV and string params, used by menu functions
 */
 void updateThreshold(struct InputSettings *settings, bool inc) {
+	
 	updateInt16t(&settings->threshold, &settings->thresholdCv, inc, THRESH_MIN, THRESH_MAX, THRESH_INC);
 	
 	if (settings->thresholdCv != CV_NONE) {
@@ -104,6 +109,10 @@ void updateThreshold(struct InputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->thresholdStr, "%dmV", settings->threshold);
 	}
+	
+	// check if param is default for display invert
+	settings->thresholdDef = ((settings->thresholdCv == CV_NONE) && \
+						(settings->threshold == THRESH_DEFAULT));
 }
 
 /*
@@ -111,6 +120,7 @@ void updateThreshold(struct InputSettings *settings, bool inc) {
  *	used by menu functions
 */
 void updateInvert(struct InputSettings *settings, bool inc) {
+	
 	updateBool(&settings->invert, &settings->invertCv, inc);
 	
 	if (settings->invertCv != CV_NONE) {
@@ -119,6 +129,9 @@ void updateInvert(struct InputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->invertStr, (settings->invert)? "true":"false");
 	}
+	
+	// check if param is default for display invert
+	settings->invertDef = ((settings->invertCv == CV_NONE) && (settings->invert == false));
 }
 
 /*
@@ -126,6 +139,7 @@ void updateInvert(struct InputSettings *settings, bool inc) {
  *	and string parameters, used by menu functions
 */
 void updateHys(struct InputSettings *settings, bool inc) {
+	
 	updateUint8t(&settings->hysteresis, &settings->hysCv, inc, HYS_MIN, HYS_MAX, HYS_INC);
 	
 	if (settings->hysCv != CV_NONE) {
@@ -134,6 +148,9 @@ void updateHys(struct InputSettings *settings, bool inc) {
 	else {
 		sprintf(settings->hysStr, "%d0mV", settings->hysteresis);
 	}
+	
+	// check if param is default for display invert
+	settings->hysDef = ((settings->hysCv == CV_NONE) && (settings->hysteresis == HYS_DEFAULT));
 }
 
 /*
@@ -141,8 +158,30 @@ void updateHys(struct InputSettings *settings, bool inc) {
  *	CV for this option
 */
 void updateCopyIn1(struct Input *input, bool inc) {
+		
 	// only 2 options here, so we just need to toggle :)
 	input->copyIn1 = !input->copyIn1;
 	sprintf(input->copyIn1Str, (input->copyIn1) ? "Yes":"No");
+	input->copyIn1Def = !input->copyIn1;
 }
 
+/*
+ *	sets isDefault states for all settings within an Input struct
+*/
+void readInputDefaultStates(struct Input *input) {
+	for (uint8_t i=0; i<2; i++) {
+		// threshold
+		input->input_settings[i].thresholdDef = ((input->input_settings[i].thresholdCv == CV_NONE) && \
+					(input->input_settings[i].threshold == THRESH_DEFAULT));
+					
+		// invert
+		input->input_settings[i].invertDef = ((input->input_settings[i].invertCv == CV_NONE) && \
+					(input->input_settings[i].invert == false));
+					
+		// hysteresis
+		input->input_settings[i].hysDef = ((input->input_settings[i].hysCv == CV_NONE) && \
+					(input->input_settings[i].hysteresis == HYS_DEFAULT));
+	}
+	
+	input->copyIn1Def = !input->copyIn1;
+}

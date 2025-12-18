@@ -11,6 +11,8 @@
 #include <stdlib.h>
 #include "gateDr.h"
 
+#define VER "1.02"
+
 // we've got 6 inputs, but AIN[2] and [3] don't have a hardware 
 // input on E-variant SAMD21s
 #define PIN_SCAN_COUNT 8
@@ -54,7 +56,7 @@ int main (void)
 	
 	// initialize menu
 	gfx_mono_init();
-	menuInit(&rtcCount);
+	menuInit(&rtcCount, VER);
 	screenDrawInit(&tc3_instance);						// TC3 initialized within function
 	
 	int16_t adcResult[PIN_SCAN_COUNT] = {0};			// stores most recent ADC reads in mV

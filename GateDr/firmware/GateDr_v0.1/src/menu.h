@@ -65,7 +65,7 @@ struct gfx_mono_menu cvMenu;
 
 struct Menu menu;
 
-void menuInit(uint32_t *currentCount);
+void menuInit(uint32_t *currentCount, const char *version);
 void screenDrawInit(struct tc_module *tc_instance);
 void screenDrawCallback(struct tc_module *const tc_instance);
 

@@ -76,8 +76,17 @@ struct OutputSettings {
 	char clkDivStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char clkPhaseStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char divRstStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
-
-	};	// 12 bytes to NVM, excludes char arrays
+	
+	// bools to keep track of whether current value is at the default,
+	// used by gfx_mono_menu for inverting parameter on the display
+	bool probabilityDef;
+	bool delayDef;
+	bool trigDef;
+	bool trigLenDef;
+	bool clkDivDef;
+	bool clkPhaseDef;
+	bool divRstDef;
+	};	// 12 bytes to NVM, excludes char arrays & 'default' bools
 
 /*
  *	a struct to hold all of the necessary values per-output that represent
@@ -116,6 +125,7 @@ struct Output {
 	uint32_t *rtcCurentCount;	// current RTC count (updated on processing loop start)
 	
 	char out2Str[GFX_MONO_MENU_PARAM_MAX_CHAR];
+	bool out2Def;
 	};
 
 void setOutputSettingsDefaults(struct OutputSettings *settings);
@@ -134,5 +144,10 @@ void updateClkPhase(struct OutputSettings *settings, bool inc);
 void updateDivRst(struct OutputSettings *settings, bool inc);
 void updateDelay(struct OutputSettings *settings, bool inc);
 void updateOut2Settings(struct Output *out, bool inc);
+
+/*
+ *	used after NVM read to set probabilityDef, delayDef, etc
+*/
+void readOutputDefaultStates(struct Output *out);
 
 #endif /* OUTPUTS_H_ */

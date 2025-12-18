@@ -18,15 +18,17 @@ char globalSubmenuStr[3] = "->";	// parameter display 'value' for submenu
 static const char *cvRangeStrings[] = {"+/-8V", "+8V", "+/-5V", "+5V"};
 
 // helper function declaration
+static inline void readGlobalDefaultStates(struct GlobalSettings *global, struct Cv *cv);
 static inline void assignGlobalStrings(struct GlobalSettings *global, struct Cv *cv);
 
 /*
  *	set all global settings defaults
 */
 void setGlobalSettingsDefaults(struct GlobalSettings *settings, struct Cv *cv) {
-	settings->chReset = RESET_NONE;
-	settings->longPressTime = LONG_PRESS_COUNT_DEFAULT;
+	settings->chReset =			RESET_NONE;
+	settings->longPressTime =	LONG_PRESS_COUNT_DEFAULT;
 	settings->screenSaverTime = SCREENSAVER_DEFAULT;
+	settings->globalDef =		true;
 	
 	// write the default long press time to the UI struct instance
 	writeLongPressTimes(settings->longPressTime);
@@ -129,6 +131,7 @@ void readGlobalSettingsNVM(struct GlobalSettings *global, struct Cv *cv) {
 	global->screenSaverTime = buffer[7];
 	
 	writeGlobalStrings(global, cv);
+	readGlobalDefaultStates(global, cv);
 	assignGlobalStrings(global, cv);
 }
 
@@ -172,6 +175,16 @@ void writeGlobalStrings(struct GlobalSettings *global, struct Cv *cv) {
 }
 
 /*
+ *	write the CV and global settings default states based on the currently
+ *	loaded values
+*/
+static inline void readGlobalDefaultStates(struct GlobalSettings *global, struct Cv *cv) {
+	global->globalDef = true;
+	
+	readCVDefaultStates(cv);
+}
+
+/*
  *	assigns string pointers for use by the menu/display functions
 */
 static inline void assignGlobalStrings(struct GlobalSettings *global, struct Cv *cv) {
@@ -183,9 +196,21 @@ static inline void assignGlobalStrings(struct GlobalSettings *global, struct Cv 
 	global->globalSettingsParams[4] = global->longPressTimeStr;
 	global->globalSettingsParams[5] = global->screenSaverTimeStr;
 	
+	global->globalSettingsDefaults[0] = &global->globalDef;
+	global->globalSettingsDefaults[1] = &global->globalDef;
+	global->globalSettingsDefaults[2] = &global->globalDef;
+	global->globalSettingsDefaults[3] = &global->globalDef;
+	global->globalSettingsDefaults[4] = &global->globalDef;
+	global->globalSettingsDefaults[5] = &global->globalDef;
+	
 	// CV settings
 	cv->cvParams[0] = cv->settings[0].rangeStr;
 	cv->cvParams[1] = cv->settings[0].thresholdStr;
 	cv->cvParams[2] = cv->settings[1].rangeStr;
 	cv->cvParams[3] = cv->settings[1].thresholdStr;
+	
+	cv->cvDefaults[0] = &cv->settings[0].rangeDef;
+	cv->cvDefaults[1] = &cv->settings[0].thresholdDef;
+	cv->cvDefaults[2] = &cv->settings[1].rangeDef;
+	cv->cvDefaults[3] = &cv->settings[1].thresholdDef;
 }

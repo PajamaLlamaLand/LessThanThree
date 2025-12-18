@@ -27,7 +27,13 @@ struct InputSettings {
 	char thresholdStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char invertStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char hysStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
-	};	// 7 bytes to NVM, excludes char arrays
+	
+	// bools to keep track of whether current value is at the default,
+	// used by gfx_mono_menu for inverting parameter on the display
+	bool thresholdDef;
+	bool invertDef;
+	bool hysDef;
+	};	// 7 bytes to NVM, excludes char arrays & 'default' bools
 
 struct InputState {
 	int16_t input;				// current input in mV
@@ -45,6 +51,7 @@ struct Input {
 	bool copyIn1;				// input 2 uses ADC conversion from input 1
 	
 	char copyIn1Str[GFX_MONO_MENU_PARAM_MAX_CHAR];
+	bool copyIn1Def;
 	};
 
 void setInputDefaults(struct InputSettings *settings);
@@ -59,5 +66,10 @@ void updateThreshold(struct InputSettings *settings, bool inc);
 void updateInvert(struct InputSettings *settings, bool inc);
 void updateHys(struct InputSettings *settings, bool inc);
 void updateCopyIn1(struct Input *input, bool inc);
+
+/*
+ *	used after NVM read to set thresholdDef, invertDef, etc
+*/
+void readInputDefaultStates(struct Input *input);
 
 #endif /* INPUTS_H_ */

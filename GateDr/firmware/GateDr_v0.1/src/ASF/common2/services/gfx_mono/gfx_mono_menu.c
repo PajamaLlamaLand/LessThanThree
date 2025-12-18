@@ -114,12 +114,26 @@ static void menu_draw(struct gfx_mono_menu *menu, bool redraw)
 			// draw parameter names
 			gfx_mono_draw_progmem_string(
 					(char PROGMEM_PTR_T)menu->strings[i],
-					GFX_MONO_MENU_INDICATOR_WIDTH + 1,
+					GFX_MONO_MENU_INDICATOR_WIDTH + 2,
 					line * SYSFONT_LINESPACING, &sysfont);
+			// invert input/output number if 2nd i/o
+			if (menu->strings[i][0] == '2') {
+				gfx_mono_draw_filled_rect(GFX_MONO_MENU_INDICATOR_WIDTH + 1,
+					line * SYSFONT_LINESPACING, SYSFONT_WIDTH + 1, SYSFONT_LINESPACING,
+					GFX_PIXEL_XOR);
+			}
 			// draw parameter values
 			gfx_mono_draw_progmem_string(menu->params[i], GFX_MONO_LCD_WIDTH - 
-					(SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1)), 
+					(SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1)) + 2, 
 					line * SYSFONT_LINESPACING, &sysfont);
+			// invert param if not set to default value
+			if (!(*menu->defaults[i])) {
+				gfx_mono_draw_filled_rect(GFX_MONO_LCD_WIDTH -
+				(SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1)),
+				line * SYSFONT_LINESPACING,
+				SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1),
+				SYSFONT_LINESPACING, GFX_PIXEL_XOR);
+			}
 			line++;
 		}
 		redraw_state = false;
@@ -140,7 +154,12 @@ void gfx_mono_menu_init(struct gfx_mono_menu *menu)
 
 	/* Draw the menu title on the top of the screen */
 	gfx_mono_draw_progmem_string((char PROGMEM_PTR_T)menu->title,
-			0, 0, &sysfont);
+			2, 0, &sysfont);
+			
+	// invert title if menu is in CH2 for clarity, checking this in a cheeky way
+	if (menu->title[2] == '2') {
+		gfx_mono_draw_filled_rect(0, 0, GFX_MONO_LCD_WIDTH, SYSFONT_LINESPACING, GFX_PIXEL_XOR);
+	}
 
 	/* Draw menu options below */
 	menu_draw(menu, true);
@@ -211,9 +230,18 @@ void gfx_mono_menu_update_parameter(struct gfx_mono_menu *menu) {
 	// draw updated parameter
 	gfx_mono_draw_progmem_string(menu->params[menu->current_selection],
 			GFX_MONO_LCD_WIDTH - 
-			(SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1)),
+			(SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1)) + 2,
 			page_selection * SYSFONT_LINESPACING,
 			&sysfont);
+	
+	// invert param if not set to default value
+	if (!(*menu->defaults[menu->current_selection])) {
+		gfx_mono_draw_filled_rect(GFX_MONO_LCD_WIDTH -
+		(SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1)),
+		page_selection * SYSFONT_LINESPACING,
+		SYSFONT_WIDTH * (GFX_MONO_MENU_PARAM_MAX_CHAR - 1),
+		SYSFONT_LINESPACING, GFX_PIXEL_XOR);
+	}
 }
 
 /*

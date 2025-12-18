@@ -110,6 +110,7 @@ struct gfx_mono_menu {
 	PROGMEM_STRING_T title;
 	PROGMEM_STRING_T *strings;
 	char **params;				// strings to store current parameter displays
+	bool **defaults;			// bools to determine if param display is inverted
 	uint8_t num_elements;
 	uint8_t current_selection;
 	uint8_t current_page;

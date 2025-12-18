@@ -29,9 +29,14 @@ struct Channel {
 	
 	char op1Str[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char op2Str[GFX_MONO_MENU_PARAM_MAX_CHAR];
-	char *inputsMenuParams[7];		// stores pointers to param strings used by UI,
+	bool opDef;
+	
+	char *inputsMenuParams[7];		// stores pointers to param strings used by menu
+	bool *inputsMenuDefaults[7];		// stores 'default' state for inputs menu params used by menu.c
 	char *chMenuParams[4];			// includes blanks / '->' for submenus
+	bool *chMenuDefaults[4];
 	char *outputsMenuParams[15];
+	bool *outputsMenuDefaults[15];
 	};
 
 // channel instance(s)

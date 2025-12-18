@@ -99,7 +99,7 @@ void updateUint16t(uint16_t *param, uint8_t *cv, bool inc, uint16_t min, uint16_
 			else {	// decrementing
 				*param -= step;
 				
-				if (*param < min) {	// underflow check
+				if ((*param < min) || (*param > max)) {	// underflow check
 					*cv = CV2;
 				}
 			}

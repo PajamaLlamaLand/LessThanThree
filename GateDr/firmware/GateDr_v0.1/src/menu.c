@@ -10,6 +10,9 @@
 // framebuffers for each menu page 
 static uint8_t framebuffers[MENU_COUNT][GFX_MONO_LCD_FRAMEBUFFER_SIZE];
 
+// string container for appending current VER# to Global screen title
+char globalTitleScreen[24];
+
 // string lists for menu parameters
 const char *globalSettingsStrings[] = {"CH1", "CH2", "CV", "Reset", "Long-press", "Screen off"};
 const char *channelMenuStrings[] = {"Inputs", "OP 1", "OP 2", "Outputs"};
@@ -107,18 +110,22 @@ static inline void writeNVM(void) {
 /*
  *	initialize all menus with their default values, draw default menu
 */
-void menuInit(uint32_t *currentCount) {
-	globalMenu.title = "Global";
+void menuInit(uint32_t *currentCount, const char *version) {
+	sprintf(globalTitleScreen, "Global          v%s", version);
+	
+	globalMenu.title = globalTitleScreen;
 	globalMenu.strings = globalSettingsStrings;
 	globalMenu.params = globalSettings.globalSettingsParams;
+	globalMenu.defaults = globalSettings.globalSettingsDefaults;
 	globalMenu.num_elements = 6;
 	globalMenu.current_selection = 0;
 	globalMenu.current_page = 0;
 	globalMenu.paramEdit = false;
 	
-	channel1Menu.title = "Channel 1";
+	channel1Menu.title = "CH1";
 	channel1Menu.strings = channelMenuStrings;
 	channel1Menu.params = chan[0].chMenuParams;
+	channel1Menu.defaults = chan[0].chMenuDefaults;
 	channel1Menu.num_elements = 4;
 	channel1Menu.current_selection = 0;
 	channel1Menu.current_page = 0;
@@ -127,6 +134,7 @@ void menuInit(uint32_t *currentCount) {
 	inputs1Menu.title = "CH1 Inputs";
 	inputs1Menu.strings = inputsMenuStrings;
 	inputs1Menu.params = chan[0].inputsMenuParams;
+	inputs1Menu.defaults = chan[0].inputsMenuDefaults;
 	inputs1Menu.num_elements = 7;
 	inputs1Menu.current_selection = 0;
 	inputs1Menu.current_page = 0;
@@ -135,14 +143,16 @@ void menuInit(uint32_t *currentCount) {
 	outputs1Menu.title = "CH1 Outputs";
 	outputs1Menu.strings = outputsMenuStrings;
 	outputs1Menu.params = chan[0].outputsMenuParams;
+	outputs1Menu.defaults = chan[0].outputsMenuDefaults;
 	outputs1Menu.num_elements = 15;
 	outputs1Menu.current_selection = 0;
 	outputs1Menu.current_page = 0;
 	outputs1Menu.paramEdit = false;
 	
-	channel2Menu.title = "Channel 2";
+	channel2Menu.title = "CH2";
 	channel2Menu.strings = channelMenuStrings;
 	channel2Menu.params = chan[1].chMenuParams;
+	channel2Menu.defaults = chan[1].chMenuDefaults;
 	channel2Menu.num_elements = 4;
 	channel2Menu.current_selection = 0;
 	channel2Menu.current_page = 0;
@@ -151,6 +161,7 @@ void menuInit(uint32_t *currentCount) {
 	inputs2Menu.title = "CH2 Inputs";
 	inputs2Menu.strings = inputsMenuStrings;
 	inputs2Menu.params = chan[1].inputsMenuParams;
+	inputs2Menu.defaults = chan[1].inputsMenuDefaults;
 	inputs2Menu.num_elements = 7;
 	inputs2Menu.current_selection = 0;
 	inputs2Menu.current_page = 0;
@@ -159,6 +170,7 @@ void menuInit(uint32_t *currentCount) {
 	outputs2Menu.title = "CH2 Outputs";
 	outputs2Menu.strings = outputsMenuStrings;
 	outputs2Menu.params = chan[1].outputsMenuParams;
+	outputs2Menu.defaults = chan[1].outputsMenuDefaults;
 	outputs2Menu.num_elements = 15;
 	outputs2Menu.current_selection = 0;
 	outputs2Menu.current_page = 0;
@@ -167,6 +179,7 @@ void menuInit(uint32_t *currentCount) {
 	cvMenu.title = "CV";
 	cvMenu.strings = cvMenuStrings;
 	cvMenu.params = cv_instance.cvParams;
+	cvMenu.defaults = cv_instance.cvDefaults;
 	cvMenu.num_elements = 4;
 	cvMenu.current_selection = 0;
 	cvMenu.current_page = 0;
@@ -284,7 +297,7 @@ void processActionNone(void) {
 			temp -= menu.lastInput;
 			counter = 0;
 			
-			if (temp > screenSaverTimes[globalSettings.screenSaverTime]) {
+			if (temp >= screenSaverTimes[globalSettings.screenSaverTime]) {
 				ssd1306_write_command(SSD1306_CMD_SET_DISPLAY_OFF);
 				menu.screenSaved = true;
 			}
@@ -377,7 +390,7 @@ static void updateChannelMenuParam(bool inc) {
  *	utility function for determining which parameter to update within the
  *	inputs menu, only called if in paramEdit mode
 */
-static void updateInputsMenuParam(bool inc) {
+static void updateInputsMenuParam(bool inc) {	
 	switch (menuList[menu.currentMenu]->current_selection) {
 		case 0:	// in1 threshold
 			updateThreshold(&chan[menu.currentChannel].input.input_settings[0], inc);
@@ -407,7 +420,7 @@ static void updateInputsMenuParam(bool inc) {
  *	utility function for determining which parameter to update within the
  *	outputs menu, only called if in paramEdit mode
 */
-static void updateOutputsMenuParam(bool inc) {
+static void updateOutputsMenuParam(bool inc) {	
 	switch (menuList[menu.currentMenu]->current_selection) {
 		case 0:	// out1 clock division
 			updateClkDiv(&chan[menu.currentChannel].out.output_settings[0], inc);
@@ -461,7 +474,7 @@ static void updateOutputsMenuParam(bool inc) {
  *	utility function for determining which parameter to update within the
  *	CV menu, only called if in paramEdit mode
 */
-static void updateCvMenuParam(bool inc) {
+static void updateCvMenuParam(bool inc) {	
 	switch (menuList[menu.currentMenu]->current_selection) {
 		case 0:	// CV1 range
 			updateCvRange(&cv_instance.settings[0], inc);

@@ -54,7 +54,13 @@ void setOutputSettingsDefaults(struct OutputSettings *settings) {
 	sprintf(settings->clkDivStr, "/%d", DIV_DEFAULT);
 	sprintf(settings->clkPhaseStr, "%d", DIV_PHASE_DEFAULT);
 	sprintf(settings->divRstStr, divRstStrings[settings->divRst]);
-	//sprintf(settings->delayStr, "%dms", DELAY_DEFAULT);
+	settings->probabilityDef =	true;
+	settings->delayDef =		true;
+	settings->trigDef =			true;
+	settings->trigLenDef =		true;
+	settings->clkDivDef =		true;
+	settings->clkPhaseDef =		true;
+	settings->divRstDef =		true;
 }
 
 /*
@@ -279,6 +285,7 @@ void processChannelOutput(struct Output *out, bool op_out1, bool op_out2, struct
  *	used by menu functions
 */
 void updateProbability(struct OutputSettings *settings, bool inc) {
+	
 	updateUint8t(&settings->probability, &settings->probabilityCv, inc, PROB_MIN, PROB_MAX, PROB_INC);
 	
 	if (settings->probabilityCv != CV_NONE) {
@@ -287,6 +294,10 @@ void updateProbability(struct OutputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->probabilityStr, "%d%%", settings->probability);
 	}
+	
+	// check if param is default for display invert
+	settings->probabilityDef = ((settings->probabilityCv == CV_NONE) && \
+						(settings->probability == PROB_DEFAULT));
 }
 
 /*
@@ -294,6 +305,7 @@ void updateProbability(struct OutputSettings *settings, bool inc) {
  *	used by menu functions
 */
 void updateTrig(struct OutputSettings *settings, bool inc) {
+	
 	updateUint8t(&settings->trig, &settings->trigCv, inc, TRIG_OFF, TRIG_TOGGLE, 1);
 	
 	if (settings->trigCv != CV_NONE) {
@@ -302,6 +314,9 @@ void updateTrig(struct OutputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->trigStr, "%s", trigStrings[settings->trig]);
 	}
+	
+	// check if param is default for display invert
+	settings->trigDef = ((settings->trigCv == CV_NONE) && (settings->trig == TRIG_DEFAULT));
 }
 
 /*
@@ -309,6 +324,7 @@ void updateTrig(struct OutputSettings *settings, bool inc) {
  *	 parameter string, used by menu functions
 */
 void updateTrigLen(struct OutputSettings *settings, bool inc) {
+	
 	updateUint16t(&settings->trigLen, &settings->trigLenCv, inc, TRIG_LEN_MIN, TRIG_LEN_MAX, TRIG_LEN_INC);
 	
 	if (settings->trigLenCv != CV_NONE) {
@@ -317,6 +333,9 @@ void updateTrigLen(struct OutputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->trigLenStr, "%dms", settings->trigLen);
 	}
+	
+	// check if param is default for display invert
+	settings->trigLenDef = ((settings->trigLenCv == CV_NONE) && (settings->trigLen == TRIG_LEN_DEFAULT));
 }
 
 /*
@@ -324,6 +343,7 @@ void updateTrigLen(struct OutputSettings *settings, bool inc) {
  *	string, used by menu functions
 */
 void updateClkDiv(struct OutputSettings *settings, bool inc) {
+	
 	updateUint8t(&settings->clkDiv, &settings->clkDivCv, inc, DIV_MIN, DIV_MAX, DIV_INC);
 	
 	if (settings->clkDivCv != CV_NONE) {
@@ -332,6 +352,9 @@ void updateClkDiv(struct OutputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->clkDivStr, "/%d", settings->clkDiv);
 	}
+	
+	// check if param is default for display invert
+	settings->clkDivDef = ((settings->clkDivCv == CV_NONE) && (settings->clkDiv == DIV_DEFAULT));
 }
 
 /*
@@ -339,6 +362,7 @@ void updateClkDiv(struct OutputSettings *settings, bool inc) {
  *	string, used by menu functions
 */
 void updateClkPhase(struct OutputSettings *settings, bool inc) {
+	
 	updateUint8t(&settings->clkPhase, &settings->clkPhaseCv, inc, DIV_PHASE_MIN, DIV_PHASE_MAX, DIV_INC);
 	
 	if (settings->clkPhaseCv != CV_NONE) {
@@ -347,6 +371,9 @@ void updateClkPhase(struct OutputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->clkPhaseStr, "%d", settings->clkPhase);
 	}
+	
+	// check if param is default for display invert
+	settings->clkPhaseDef = ((settings->clkPhaseCv == CV_NONE) && (settings->clkPhase == DIV_PHASE_DEFAULT));
 }
 
 /*
@@ -354,6 +381,7 @@ void updateClkPhase(struct OutputSettings *settings, bool inc) {
  *	input and update parameter string (no CV control), used by menu functions
 */
 void updateDivRst(struct OutputSettings *settings, bool inc) {
+	
 	if (inc) {
 		settings->divRst += 1;
 		if (settings->divRst > DIV_RST_IN2) {	// overflow check
@@ -367,6 +395,9 @@ void updateDivRst(struct OutputSettings *settings, bool inc) {
 		}
 	}
 	sprintf(settings->divRstStr, "%s", divRstStrings[settings->divRst]);
+	
+	// check if param is default for display invert
+	settings->divRstDef = (settings->divRst == DIV_RST_DEFAULT);
 }
 
 /*
@@ -374,6 +405,7 @@ void updateDivRst(struct OutputSettings *settings, bool inc) {
  *	used by menu functions
 */
 void updateDelay(struct OutputSettings *settings, bool inc) {
+	
 	updateUint16t(&settings->delay, &settings->delayCv, inc, DELAY_MIN, DELAY_MAX, DELAY_INC);
 	
 	if (settings->delayCv != CV_NONE) {
@@ -382,6 +414,9 @@ void updateDelay(struct OutputSettings *settings, bool inc) {
 	else {	// not under CV control
 		sprintf(settings->delayStr, "%dms", settings->delay);
 	}
+	
+	// check if param is default for display invert
+	settings->delayDef = ((settings->delayCv == CV_NONE) && (settings->delay == DELAY_DEFAULT));
 }
 
 /*
@@ -389,6 +424,7 @@ void updateDelay(struct OutputSettings *settings, bool inc) {
  *	settings and update parameter string (no CV control), used by menu functions
 */
 void updateOut2Settings(struct Output *out, bool inc) {
+	
 	if (inc) {
 		out->out2_settings += 1;
 		if (out->out2_settings > OUT2_BERN) {	// overflow check
@@ -402,5 +438,44 @@ void updateOut2Settings(struct Output *out, bool inc) {
 		}
 	}
 	sprintf(out->out2Str, "%s", out2Strings[out->out2_settings]);
+	
+	// check if param is default for display invert
+	out->out2Def = (out->out2_settings == OUT2_SEPARATE);
 }
 
+/*
+ *	sets isDefault states for all settings within an Output struct
+*/
+void readOutputDefaultStates(struct Output *out) {
+	for (uint8_t i=0; i<2; i++) {
+		// probability
+		out->output_settings[i].probabilityDef = ((out->output_settings[i].probabilityCv == CV_NONE) && \
+		(out->output_settings[i].probability == PROB_DEFAULT));
+		
+		// trig type
+		out->output_settings[i].trigDef = ((out->output_settings[i].trigCv == CV_NONE) && \
+					(out->output_settings[i].trig == TRIG_DEFAULT));
+		
+		// trig length
+		out->output_settings[i].trigLenDef = ((out->output_settings[i].trigLenCv == CV_NONE) && \
+					(out->output_settings[i].trigLen == TRIG_LEN_DEFAULT));
+		
+		// clock division
+		out->output_settings[i].clkDivDef = ((out->output_settings[i].clkDivCv == CV_NONE) && \
+					(out->output_settings[i].clkDiv == DIV_DEFAULT));
+		
+		// clock div phase
+		out->output_settings[i].clkPhaseDef = ((out->output_settings[i].clkPhaseCv == CV_NONE) && \
+					(out->output_settings[i].clkPhase == DIV_PHASE_DEFAULT));
+		
+		// clock div reset input
+		out->output_settings[i].divRstDef = (out->output_settings[i].divRst == DIV_RST_DEFAULT);
+		
+		// delay
+		out->output_settings[i].delayDef = ((out->output_settings[i].delayCv == CV_NONE) && \
+		(out->output_settings[i].delay == DELAY_DEFAULT));
+	}
+	
+	// output 2 setting
+	out->out2Def = (out->out2_settings == OUT2_SEPARATE);
+}

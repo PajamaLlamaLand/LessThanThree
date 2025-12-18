@@ -23,6 +23,7 @@ static const char *out2Strings[] = {"sep", "foll", "inv"};
 
 // helper function declaration
 static inline void writeChannelStrings(struct Channel *ch);
+static inline void readChannelDefaultStates(struct Channel *ch);
 static inline void assignChannelStrings(struct Channel * ch);
 
 /*
@@ -46,6 +47,7 @@ void setChannelDefaults(struct Channel *ch, uint8_t num) {
 	ch->cv_op_prev[1] = DEFAULT_OP_2;
 	sprintf(ch->op1Str, opStrings[ch->op_select[0]]);
 	sprintf(ch->op2Str, opStrings[ch->op_select[1]]);
+	ch->opDef = true;
 	
 	// initialize inputs and outputs
 	for(uint8_t i = 0; i < 2; i++) {
@@ -58,8 +60,10 @@ void setChannelDefaults(struct Channel *ch, uint8_t num) {
 	// initialize shared input, output and channel settings
 	ch->input.copyIn1 = false;
 	sprintf(ch->input.copyIn1Str, "No");
+	ch->input.copyIn1Def = true;
 	ch->out.out2_settings = DEFAULT_OUT2_SETTINGS;
 	sprintf(ch->out.out2Str, "sep");
+	ch->out.out2Def = true;
 		
 	// write settings to NVM
 	writeChannelNVM(ch, num);
@@ -181,6 +185,7 @@ void readChannelNVM(struct Channel *ch, uint8_t i) {
 	
 	// update string settings for display
 	writeChannelStrings(ch);
+	readChannelDefaultStates(ch);
 	assignChannelStrings(ch);
 }
 
@@ -369,6 +374,17 @@ static inline void writeChannelStrings(struct Channel *ch) {
 }
 
 /*
+ *	write the input, output, and channel default states based on the currently 
+ *	loaded variables
+*/
+static inline void readChannelDefaultStates(struct Channel *ch) {
+	ch->opDef = true;
+	
+	readInputDefaultStates(&ch->input);
+	readOutputDefaultStates(&ch->out);
+}
+
+/*
  *	assigns string pointers for use by the menu/display functions
 */
 static inline void assignChannelStrings(struct Channel * ch) 
@@ -384,10 +400,23 @@ static inline void assignChannelStrings(struct Channel * ch)
 	ch->inputsMenuParams[5] = ch->input.input_settings[1].hysStr;
 	ch->inputsMenuParams[6] = ch->input.input_settings[1].invertStr;
 	
+	ch->inputsMenuDefaults[0] = &ch->input.input_settings[0].thresholdDef;
+	ch->inputsMenuDefaults[1] = &ch->input.input_settings[0].hysDef;
+	ch->inputsMenuDefaults[2] = &ch->input.input_settings[0].invertDef;
+	ch->inputsMenuDefaults[3] = &ch->input.copyIn1Def;
+	ch->inputsMenuDefaults[4] = &ch->input.input_settings[1].thresholdDef;
+	ch->inputsMenuDefaults[5] = &ch->input.input_settings[1].hysDef;
+	ch->inputsMenuDefaults[6] = &ch->input.input_settings[1].invertDef;
+	
 	ch->chMenuParams[0] = submenuStr;
 	ch->chMenuParams[1] = ch->op1Str;
 	ch->chMenuParams[2] = ch->op2Str;
 	ch->chMenuParams[3] = submenuStr;
+	
+	ch->chMenuDefaults[0] = &ch->opDef;
+	ch->chMenuDefaults[1] = &ch->opDef;
+	ch->chMenuDefaults[2] = &ch->opDef;
+	ch->chMenuDefaults[3] = &ch->opDef;
 	
 	ch->outputsMenuParams[0] = ch->out.output_settings[0].clkDivStr;
 	ch->outputsMenuParams[1] = ch->out.output_settings[0].clkPhaseStr;
@@ -404,4 +433,20 @@ static inline void assignChannelStrings(struct Channel * ch)
 	ch->outputsMenuParams[12] = ch->out.output_settings[1].probabilityStr;
 	ch->outputsMenuParams[13] = ch->out.output_settings[1].trigStr;
 	ch->outputsMenuParams[14] = ch->out.output_settings[1].trigLenStr;
+	
+	ch->outputsMenuDefaults[0] = &ch->out.output_settings[0].clkDivDef;
+	ch->outputsMenuDefaults[1] = &ch->out.output_settings[0].clkPhaseDef;
+	ch->outputsMenuDefaults[2] = &ch->out.output_settings[0].divRstDef;
+	ch->outputsMenuDefaults[3] = &ch->out.output_settings[0].delayDef;
+	ch->outputsMenuDefaults[4] = &ch->out.output_settings[0].probabilityDef;
+	ch->outputsMenuDefaults[5] = &ch->out.output_settings[0].trigDef;
+	ch->outputsMenuDefaults[6] = &ch->out.output_settings[0].trigLenDef;
+	ch->outputsMenuDefaults[7] = &ch->out.out2Def;
+	ch->outputsMenuDefaults[8] = &ch->out.output_settings[1].clkDivDef;
+	ch->outputsMenuDefaults[9] = &ch->out.output_settings[1].clkPhaseDef;
+	ch->outputsMenuDefaults[10] = &ch->out.output_settings[1].divRstDef;
+	ch->outputsMenuDefaults[11] = &ch->out.output_settings[1].delayDef;
+	ch->outputsMenuDefaults[12] = &ch->out.output_settings[1].probabilityDef;
+	ch->outputsMenuDefaults[13] = &ch->out.output_settings[1].trigDef;
+	ch->outputsMenuDefaults[14] = &ch->out.output_settings[1].trigLenDef;
 }

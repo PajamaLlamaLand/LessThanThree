@@ -31,12 +31,18 @@ struct CvSettings {
 	// mutable strings for printing values to display
 	char rangeStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
 	char thresholdStr[GFX_MONO_MENU_PARAM_MAX_CHAR];
+	
+	// bools to keep track of whether current value is at the default,
+	// used by gfx_mono_menu for inverting parameter on the display
+	bool rangeDef;
+	bool thresholdDef;
 	};
 
 struct Cv {
 	int16_t value[2];				// holds the current CV values in mV
 	struct CvSettings settings[2];	// settings per CV input
 	char *cvParams[4];				// stores pointers to param strings used by UI
+	bool *cvDefaults[4];			// stores 'defaults' state for CV menu params, used by menu.c
 	};
 
 struct Cv cv_instance;
@@ -51,5 +57,10 @@ bool normalizeCvBool(struct Cv *cv, uint8_t sel, bool prev);
 */
 void updateCvRange(struct CvSettings *settings, bool inc);
 void updateCvThreshold(struct CvSettings *settings, bool inc);
+
+/*
+ *	used after NVM read to set rangeDef, thresholdDef, etc
+*/
+void readCVDefaultStates(struct Cv *cv);
 
 #endif /* CV_H_ */

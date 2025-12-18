@@ -25,10 +25,12 @@ static const char *cvRangeStrings[] = {"+/-8V", "+8V", "+/-5V", "+5V"};
 */
 void setCvDefaults(struct Cv *cv) {
 	for(uint8_t i = 0; i < 2; i++) {
-		cv->settings[i].range = CV_RANGE_DEFAULT;
-		cv->settings[i].threshold = CV_THRESH_DEFAULT;
+		cv->settings[i].range =			CV_RANGE_DEFAULT;
+		cv->settings[i].threshold =		CV_THRESH_DEFAULT;
 		sprintf(cv->settings[i].rangeStr, "+5V");
 		sprintf(cv->settings[i].thresholdStr, "%d", CV_THRESH_DEFAULT);
+		cv->settings[i].rangeDef =		true;
+		cv->settings[i].thresholdDef =	true;
 	}
 }
 
@@ -144,6 +146,8 @@ void updateCvRange(struct CvSettings *settings, bool inc) {
 	}
 	
 	sprintf(settings->rangeStr, "%s", cvRangeStrings[settings->range]);
+	
+	settings->rangeDef = (settings->range == CV_RANGE_DEFAULT);
 }
 
 /*
@@ -165,4 +169,19 @@ void updateCvThreshold(struct CvSettings *settings, bool inc) {
 	}
 	
 	sprintf(settings->thresholdStr, "%dmV", settings->threshold);
+	
+	settings->thresholdDef = (settings->threshold == CV_THRESH_DEFAULT);
+}
+
+/*
+ *	sets isDefault states for all settings within an Output struct
+*/
+void readCVDefaultStates(struct Cv *cv) {
+	for (uint8_t i=0; i<2; i++) {
+		// CV range
+		cv->settings[i].rangeDef = (cv->settings[i].range == CV_RANGE_DEFAULT);
+		
+		// CV threshold
+		cv->settings[i].thresholdDef = (cv->settings[i].threshold == CV_THRESH_DEFAULT);
+	}
 }
