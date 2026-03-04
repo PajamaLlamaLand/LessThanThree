@@ -198,6 +198,7 @@ void menuInit(uint32_t *currentCount, const char *version) {
 	menu.lastInput = 0;
 	menu.enc_count = 0;
 	menu.screenSaved = false;
+	menu.drawQueue = 0;
 	menu.rtcCurrentCount = currentCount;
 	
 	gfx_mono_set_framebuffer(menuList[menu.currentMenu]->fbPointer);
@@ -236,20 +237,26 @@ void screenDrawCallback(struct tc_module *const tc_instance) {
 	static uint8_t page_address = 0;
 	static uint8_t column_address = 0;
 	
-	if (!menu.screenSaved) {
-		// grab current framebuffer data & send to display driver
-		uint8_t framebuffer_byte = gfx_mono_framebuffer_get_byte(page_address, column_address);
-		ssd1306_write_data(framebuffer_byte);
+
+	// grab current framebuffer data & send to display driver
+	uint8_t framebuffer_byte = gfx_mono_framebuffer_get_byte(page_address, column_address);
+	ssd1306_write_data(framebuffer_byte);
 		
-		// update addresses as necessary, update display driver with new addresses
-		column_address++;
-		if (column_address > 127) {
-			column_address = 0;
-			page_address = (page_address >= 7) ? 0:(page_address + 1);
-			ssd1306_write_command(SSD1306_CMD_SET_PAGE_START_ADDRESS(page_address));
+	// update addresses as necessary, update display driver with new addresses
+	column_address++;
+	if (column_address > 127) {
+		column_address = 0;
+		page_address = (page_address >= 7) ? 0:(page_address + 1);
+		ssd1306_write_command(SSD1306_CMD_SET_PAGE_START_ADDRESS(page_address));
+	}
+	ssd1306_write_command(SSD1306_CMD_COL_ADD_SET_MSB(column_address >> 4));
+	ssd1306_write_command(SSD1306_CMD_COL_ADD_SET_LSB(column_address & 0x0F));
+	
+	if (page_address == 0 && column_address == 0) {
+		menu.drawQueue -= 1;
+		if (menu.drawQueue == 0) {
+			tc_disable_callback(menu.tc, TC_CALLBACK_CC_CHANNEL0);
 		}
-		ssd1306_write_command(SSD1306_CMD_COL_ADD_SET_MSB(column_address >> 4));
-		ssd1306_write_command(SSD1306_CMD_COL_ADD_SET_LSB(column_address & 0x0F));
 	}
 }
 
@@ -268,6 +275,11 @@ void setMenuFlag(uint8_t flag) {
 void processMenuAction(void) {
 	if (!menu.screenSaved) {
 		action_table[menu.actionFlag]();	// this is a function call :)
+		
+		if (menu.actionFlag != ACTION_NONE) {
+			menu.drawQueue += 1;
+			tc_enable_callback(menu.tc, TC_CALLBACK_CC_CHANNEL0);
+		}
 	}
 	else {
 		if (menu.actionFlag != ACTION_NONE) {

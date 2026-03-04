@@ -50,6 +50,7 @@ struct Menu {
 								// loop start)
 	uint32_t lastInput;			// keeps track of time since most recent action
 	bool screenSaved;			// true when no input for *screenSaverTime* minutes
+	uint8_t drawQueue;
 	
 	struct tc_module *tc;		// 10kHz TC module for drawing to screen 
 	};

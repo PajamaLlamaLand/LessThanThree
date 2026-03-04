@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include "gateDr.h"
 
-#define VER "1.02"
+#define VER "1.03"
 
 // we've got 6 inputs, but AIN[2] and [3] don't have a hardware 
 // input on E-variant SAMD21s
