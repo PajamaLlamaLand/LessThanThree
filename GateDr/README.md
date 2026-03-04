@@ -10,6 +10,8 @@ The module consists of 2 channels, each with 2 inputs and 2 outputs, and 2 globa
 
 As you can probably see already (and please read the manual in /GateDr/documentation/ to see all the other features it has!), the Gate Dr. is a very flexible utility tool designed to be able to create, combine, and fine-tune gate signals to send out to the rest of your Eurorack system. Whether you are extracting gates from LFOs, combining multiple gate sequencers and probability to create new generative sequences, or simply trimming a gate signal's length to make it play well with a module that wants short triggers, you may not need every feature it has on a given patch but it can find a place in nearly every patch you make <3
 
+The Gate Doctor is currently [available for sale here.](https://www.tindie.com/products/41107/)
+
 NOTE: The Gate Dr. is designed for control signals, not audio rate signals. However, you are highly encouraged to abuse this fact to create some unique glitchy digital textures.
 
 # Feature List
